@@ -15,6 +15,15 @@ import {ReactComponent as MinusButton} from "../images/icon-minus.svg"
 import { useState } from "react"
 const Main = () => {
     const [pieces, setPieces] = useState(0);
+    
+    const increasePieces = () => {
+        setPieces(pieces+1);
+    }
+    const decreasePieces = () => {
+        if(pieces === 0 ) return;
+        setPieces(pieces-1);
+    }
+
     return ( 
         <div className="flex w-4/5 justify-center items-center">
         <div className=" w-1/2 flex flex-col items-center h-4/5 space-y-5">
@@ -40,10 +49,10 @@ const Main = () => {
             </div>
             <p className="text-buttonColor line-through font-bold pb-5">$250.00</p>
             <div className="flex w-full justify-between space-x-5">
-            <div className="flex rounded-xl w-1/3 justify-between px-4 py-2 bg-buttonColor">
-                <button><MinusButton/></button>
+            <div className="flex rounded-xl w-1/3 justify-between px-4 py-3 bg-buttonColor">
+                <button onClick={decreasePieces} className="px-4"><MinusButton className=""/></button>
                 <p>{pieces}</p>
-                <button><PlusButton/></button>
+                <button onClick={increasePieces} className="px-4"><PlusButton/></button>
             </div>
             <button className="flex text-white justify-center items-center w-2/3 bg-primary rounded-xl"><IconCart className="text-white" /> Add to cart</button>
 
