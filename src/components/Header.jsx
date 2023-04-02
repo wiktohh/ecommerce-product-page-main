@@ -8,11 +8,11 @@ const Header = () => {
             <div className="flex items-center">
             <Logo/>
             <ul className="flex space-x-5 px-10">
-                <li>Collections</li>
-                <li>Men</li>
-                <li>Women</li>
-                <li>About</li>
-                <li>Contact</li>
+                <li className="text-darkBlue">Collections</li>
+                <li className="text-darkBlue">Men</li>
+                <li className="text-darkBlue">Women</li>
+                <li className="text-darkBlue">About</li>
+                <li className="text-darkBlue">Contact</li>
             </ul>
             </div>
             <div className="flex items-center space-x-10">
