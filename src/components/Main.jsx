@@ -13,7 +13,9 @@ import image4thombnail from "../images/image-product-4-thumbnail.jpg"
 import {ReactComponent as PlusButton} from "../images/icon-plus.svg"
 import {ReactComponent as MinusButton} from "../images/icon-minus.svg"
 import { useState } from "react"
-const Main = () => {
+
+
+const Main = ({handleCart}) => {
     const [pieces, setPieces] = useState(0);
     
     const increasePieces = () => {
@@ -22,6 +24,11 @@ const Main = () => {
     const decreasePieces = () => {
         if(pieces === 0 ) return;
         setPieces(pieces-1);
+    }
+
+    const addToCart = () => {
+        handleCart(pieces, "sneaker")
+        setPieces(0)
     }
 
     return ( 
@@ -54,7 +61,7 @@ const Main = () => {
                 <p>{pieces}</p>
                 <button onClick={increasePieces} className="px-4"><PlusButton/></button>
             </div>
-            <button className="flex text-white justify-center items-center w-2/3 bg-primary rounded-xl"><IconCart className="text-white" /> Add to cart</button>
+            <button onClick={addToCart} className="flex text-white justify-center items-center w-2/3 bg-primary rounded-xl"><IconCart className="text-white" /> Add to cart</button>
 
             </div>
 
