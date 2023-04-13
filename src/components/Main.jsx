@@ -17,6 +17,7 @@ import { useState } from "react"
 
 const Main = ({handleCart}) => {
     const [pieces, setPieces] = useState(0);
+    const [imageNumber, setImageNumber] = useState(1)
     
     const increasePieces = () => {
         setPieces(pieces+1);
@@ -31,17 +32,25 @@ const Main = ({handleCart}) => {
         setPieces(0)
     }
 
+    const mainImage = `Image${imageNumber}`
+
+    
+
     return ( 
         <div className="flex w-4/5 justify-center items-center">
         <div className=" w-1/2 flex flex-col items-center h-4/5 space-y-5">
             <div>
-                <img className="w-3/5 m-auto rounded-xl" src={Image1} alt="Image 1" />
+            {imageNumber === 1 && <img src={Image1} className="w-3/5 m-auto rounded-xl" alt="First photo" /> }
+            {imageNumber === 2 && <img src={Image2} className="w-3/5 m-auto rounded-xl" alt="Second photo" /> }
+            {imageNumber === 3 && <img src={Image3} className="w-3/5 m-auto rounded-xl" alt="Third photo" /> }
+            {imageNumber === 4 && <img src={Image4} className="w-3/5 m-auto rounded-xl" alt="Fourth photo" /> }
             </div>
             <div className="flex space-x-5">
-                <img src={image2thombnail} className="rounded-xl w-24 h-24" alt="" />
-                <img src={image1thombnail} className="rounded-xl w-24 h-24" alt="" />
-                <img src={image3thombnail} className="rounded-xl w-24 h-24" alt="" />
-                <img src={image4thombnail} className="rounded-xl w-24 h-24" alt="" />
+                <div className= {`${imageNumber === 1 ? "border-4 rounded-xl w-24 h-24 border-primary overflow-hidden" : "" }`}><img src={image1thombnail} onClick={() => setImageNumber(1)} className={`${imageNumber === 1 ? "opacity-30" : ""} rounded-md w-24 h-24`} alt="" /></div>
+                <div className= {`${imageNumber === 2 ? "border-4 rounded-xl w-24 h-24 border-primary overflow-hidden" : "" }`}><img src={image2thombnail} onClick={() => setImageNumber(2)} className={`${imageNumber === 2 ? "opacity-30" : ""} rounded-md w-24 h-24`} alt="" /></div>
+                <div className= {`${imageNumber === 3 ? "border-4 rounded-xl w-24 h-24 border-primary overflow-hidden" : "" }`}><img src={image3thombnail} onClick={() => setImageNumber(3)} className={`${imageNumber === 3 ? "opacity-30" : ""} rounded-md w-24 h-24`} alt="" /></div>
+                <div className= {`${imageNumber === 4 ? "border-4 rounded-xl w-24 h-24 border-primary overflow-hidden" : "" }`}><img src={image4thombnail} onClick={() => setImageNumber(4)} className={`${imageNumber === 4 ? "opacity-30" : ""} rounded-md w-24 h-24`} alt="" /></div>
+
             </div>
         </div>
         

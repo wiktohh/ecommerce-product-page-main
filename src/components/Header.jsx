@@ -5,7 +5,6 @@ import Cart from "./Cart"
 import { useState } from "react"
 
 const Header = (props) => {
-    console.log(props.cart)
 
     const [showCart, setShowCart] = useState(false)
 
