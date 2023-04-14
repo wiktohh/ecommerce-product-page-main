@@ -28,7 +28,7 @@ const Header = (props) => {
                 <button onClick={handleCartButton} className="relative w-10 h-10"><IconCart/>{props.cart.length === 0 ? null : <div className="flex justify-center items-center absolute right-2 top-0 bg-primary py-2 w-3/5 h-1/3 rounded-xl text-xs text-white">{props.cart.length <= 99 ? props.cart.length : "99+"}</div>}</button>
                 <img className="w-12 h-12" src={ProfilePicture} alt="profile picture" />
             </div>
-            {showCart ? <Cart cart={props.cart}/> : null}
+            {showCart ? <Cart clearCart={props.clearCart} cart={props.cart}/> : null}
         </header>
      );
 }

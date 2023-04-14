@@ -7,6 +7,10 @@ function App() {
 
   const [cart, setCart] = useState([])
 
+  const clearCart = () => {
+    setCart([])
+  }
+
   const handleCart = (attemps, name) => {
     const tmp = cart;
     for(let i=0; i<attemps; i++){
@@ -17,7 +21,7 @@ function App() {
 
   return (
     <div className="w-screen h-screen flex flex-col items-center">
-      <Header cart={cart}/>
+      <Header clearCart={clearCart} cart={cart}/>
       <Main handleCart={handleCart}/>
     </div>
   );
