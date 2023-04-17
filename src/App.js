@@ -20,7 +20,7 @@ function App() {
   }
 
   return (
-    <div className="w-screen h-screen flex flex-col items-center">
+    <div className="w-screen h-screen overflow-x-hidden flex flex-col items-center">
       <Header clearCart={clearCart} cart={cart}/>
       <Main handleCart={handleCart}/>
     </div>
