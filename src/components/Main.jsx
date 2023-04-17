@@ -51,9 +51,10 @@ const Main = ({handleCart}) => {
         if(imageNumber !== 1) setImageNumber(imageNumber-1);
         else setImageNumber(4)
     }
-
+  
     const handleModal = () => {
         setShowModal(!showModal)
+
     }
 
 

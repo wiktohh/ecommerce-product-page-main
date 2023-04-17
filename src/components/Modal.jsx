@@ -31,19 +31,20 @@ const Modal = ({handleModal, imageNumber, handleImageNumber, nextPhoto, previous
         previousPhoto()
     }
 
+
     return ( 
         <div className="w-screen h-screen fixed z-10 top-0 left-0 right-0 bottom-0 bg-[rgba(49,49,49,0.95)]">
             <Close onClick={closeModal} className="absolute top-7 right-5 md:top-10 md:right-10 text-3xl cursor-pointer fill-white hover:fill-red-500"/>
             <div className="w-screen h-screen flex flex-col items-center justify-center space-y-3">
-            <div className="relative w-2/5">
-                <button onClick={previousImage} className="flex justify-center items-center z-100 absolute top-1/2 left-12 bg-gray-200 rounded-full py-3 px-4"><PreviousButton /></button>
-                <button onClick={nextImage} className="flex justify-center items-center z-100 absolute top-1/2 right-12  bg-gray-200 rounded-full py-3 px-4"><NextButton/></button>
+            <div className="relative md:w-2/5">
+                <button onClick={previousImage} className="flex justify-center items-center z-100 absolute top-1/2 left-6 md:left-12 bg-gray-200 rounded-full py-3 px-4"><PreviousButton /></button>
+                <button onClick={nextImage} className="flex justify-center items-center z-100 absolute top-1/2 right-6 md:right-12  bg-gray-200 rounded-full py-3 px-4"><NextButton/></button>
                 <img src={Image1} className={`${imageNumber === 1 ? "block" : "hidden"} w-screen md:w-4/5 m-auto md:rounded-xl`} alt="First photo" />
                 <img src={Image3} className={`${imageNumber === 2 ? "block" : "hidden"} w-screen md:w-4/5 m-auto md:rounded-xl`} alt="Third photo" />
                 <img src={Image2} className={`${imageNumber === 3 ? "block" : "hidden"} w-screen md:w-4/5 m-auto md:rounded-xl`} alt="Second photo" />
                 <img src={Image4} className={`${imageNumber === 4 ? "block" : "hidden"} w-screen md:w-4/5 m-auto md:rounded-xl`} alt="Fourth photo" />
             </div>
-            <div className="hidden w-2/6 md:flex justify-between md:space-x-4">
+            <div className="w-full flex justify-around space-x-4">
                 <div className= {`${imageNumber === 1 ? "border-4 rounded-xl w-24 h-24 border-primary overflow-hidden" : "" }`}><img src={image1thombnail} onClick={() => changePhoto(1)} className={`${imageNumber === 1 ? "opacity-30" : ""} cursor-pointer rounded-md w-24 h-24`} alt="" /></div>
                 <div className= {`${imageNumber === 2 ? "border-4 rounded-xl w-24 h-24 border-primary overflow-hidden" : "" }`}><img src={image2thombnail} onClick={() => changePhoto(2)} className={`${imageNumber === 2 ? "opacity-30" : ""} cursor-pointer rounded-md w-24 h-24`} alt="" /></div>
                 <div className= {`${imageNumber === 3 ? "border-4 rounded-xl w-24 h-24 border-primary overflow-hidden" : "" }`}><img src={image3thombnail} onClick={() => changePhoto(3)} className={`${imageNumber === 3 ? "opacity-30" : ""} cursor-pointer rounded-md w-24 h-24`} alt="" /></div>
