@@ -15,12 +15,15 @@ import {ReactComponent as MinusButton} from "../images/icon-minus.svg"
 import {ReactComponent as NextButton} from "../images/icon-next.svg"
 import {ReactComponent as PreviousButton} from "../images/icon-previous.svg"
 
+import Modal from "./Modal"
+
 import { useState } from "react"
 
 
 const Main = ({handleCart}) => {
     const [pieces, setPieces] = useState(0);
     const [imageNumber, setImageNumber] = useState(1)
+    const [showModal, setShowModal] = useState(false)
     
     const increasePieces = () => {
         setPieces(pieces+1);
@@ -35,6 +38,10 @@ const Main = ({handleCart}) => {
         setPieces(0)
     }
 
+    const handleImageNumber = (num) => {
+        setImageNumber(num)
+    }
+
     const nextPhoto = () => {
         if(imageNumber !== 4) setImageNumber(imageNumber+1);
         else setImageNumber(1)
@@ -45,19 +52,24 @@ const Main = ({handleCart}) => {
         else setImageNumber(4)
     }
 
+    const handleModal = () => {
+        setShowModal(!showModal)
+    }
+
 
     
 
     return ( 
         <div className="flex flex-col md:flex-row w-screen md:w-4/5 md:h-3/4 justify-center items-center">
+        {showModal ? <Modal nextPhoto={nextPhoto} previousPhoto={previousPhoto} handleImageNumber={handleImageNumber} handleModal={handleModal} imageNumber={imageNumber} /> : null}
         <div className="w-screen md:w-1/2 flex flex-col items-center h-4/5 space-y-5">
             <div className="relative w-screen md:w-4/5">
                 <button onClick={previousPhoto} className="flex justify-center items-center absolute top-1/2 left-10 md:hidden bg-gray-200 rounded-full py-3 px-4"><PreviousButton /></button>
                 <button onClick={nextPhoto} className="flex justify-center items-center absolute top-1/2 right-10 md:hidden bg-gray-200 rounded-full py-3 px-4"><NextButton/></button>
-                <img src={Image1} className={`${imageNumber === 1 ? "block" : "hidden"} w-screen md:w-4/5 m-auto md:rounded-xl`} alt="First photo" />
-                <img src={Image3} className={`${imageNumber === 2 ? "block" : "hidden"} w-screen md:w-4/5 m-auto md:rounded-xl`} alt="Third photo" />
-                <img src={Image2} className={`${imageNumber === 3 ? "block" : "hidden"} w-screen md:w-4/5 m-auto md:rounded-xl`} alt="Second photo" />
-                <img src={Image4} className={`${imageNumber === 4 ? "block" : "hidden"} w-screen md:w-4/5 m-auto md:rounded-xl`} alt="Fourth photo" />
+                <img onClick={setShowModal} src={Image1} className={`${imageNumber === 1 ? "block" : "hidden"} cursor-pointer w-screen md:w-4/5 m-auto md:rounded-xl`} alt="First photo" />
+                <img onClick={setShowModal} src={Image3} className={`${imageNumber === 2 ? "block" : "hidden"} cursor-pointer w-screen md:w-4/5 m-auto md:rounded-xl`} alt="Third photo" />
+                <img onClick={setShowModal} src={Image2} className={`${imageNumber === 3 ? "block" : "hidden"} cursor-pointer w-screen md:w-4/5 m-auto md:rounded-xl`} alt="Second photo" />
+                <img onClick={setShowModal} src={Image4} className={`${imageNumber === 4 ? "block" : "hidden"} cursor-pointer w-screen md:w-4/5 m-auto md:rounded-xl`} alt="Fourth photo" />
             </div>
             <div className="hidden w-2/3 md:flex justify-between md:space-x-4">
                 <div className= {`${imageNumber === 1 ? "border-4 rounded-xl w-24 h-24 border-primary overflow-hidden" : "" }`}><img src={image1thombnail} onClick={() => setImageNumber(1)} className={`${imageNumber === 1 ? "opacity-30" : ""} cursor-pointer rounded-md w-24 h-24`} alt="" /></div>
