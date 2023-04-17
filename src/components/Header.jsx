@@ -3,20 +3,27 @@ import {ReactComponent as IconCart} from "../images/icon-cart.svg"
 import {ReactComponent as Hamburger} from "../images/icon-menu.svg"
 import ProfilePicture from "../images/image-avatar.png"
 import Cart from "./Cart"
+import HamburgerMenu from "./HamburgerMenu"
 import { useState, useRef, useEffect } from "react"
 
 const Header = (props) => {
 
     const [showCart, setShowCart] = useState(false)
+    const [showMenu, setShowMenu] = useState(false)
 
     const handleCartButton = () => {
         setShowCart(!showCart)
     }
 
+    const handleHamburgerButton = () => {
+        setShowMenu(!showMenu)
+    }
+
     return ( 
         <header className="flex items-center justify-around md:justify-between p-10 w-screen md:w-4/5 border-b-4">
             <div className="flex items-center">
-            <Hamburger className="block mr-4 md:hidden"/>
+            <Hamburger onClick={handleHamburgerButton} className="cursor-pointer block mr-4 md:hidden"/>
+            {showMenu ? <HamburgerMenu handleHamburgerButton={handleHamburgerButton}/> : null}
             <Logo/>
             <ul className="hidden md:flex md:space-x-5 md:px-10">
                 <li className="text-darkBlue">Collections</li>
