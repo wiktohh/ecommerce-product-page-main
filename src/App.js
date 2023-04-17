@@ -1,11 +1,22 @@
 import Header from "./components/Header"
 import Main from "./components/Main"
 import './App.css';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
 
-  const [cart, setCart] = useState([])
+  const [cart, setCart] = useState(loadCarts())
+
+
+  function loadCarts(){
+    const cartJSON = localStorage.getItem('cart');
+    if(cartJSON == null) return []
+    return JSON.parse(cartJSON)
+  }
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart))
+  },[cart])
 
   const clearCart = () => {
     setCart([])
